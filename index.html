@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SMART TRADE EA</title>
+  <meta name="description" content="Smart Autopilot Trading Community" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Orbitron:wght@600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root{
+      --bg:#020617;
+      --neon:#00e6ff;
+      --neon-2:#58f2c5;
+      --muted:rgba(255,255,255,0.72);
+      --glass:rgba(255,255,255,0.03);
+      --accent:linear-gradient(90deg,var(--neon),#6df);
+      --radius:14px;
+      --maxw:1100px;
+    }
+
+    *{box-sizing:border-box}
+    html, body {height:100%}
+
+    body {
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background:radial-gradient(1200px 600px at 10% 10%, rgba(0,230,255,0.03), transparent), var(--bg);
+      color:#e7f6ff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:40px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .wrap {
+        width:100%;
+        max-width:var(--maxw);
+        display:grid;
+        grid-template-columns:1fr 480px;
+        gap:28px;
+        align-items:center
+    }
+    @media (max-width:980px){.wrap{grid-template-columns:1fr;gap:22px;padding-bottom:24px}}
+
+    .hero-left {
+        padding:40px;
+        border-radius:20px;
+        background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+        backdrop-filter: blur(6px);
+    }
+
+    .eyebrow {
+        font-size:13px;
+        color:var(--muted);
+        margin-bottom:18px
+    }
+
+    h1 {
+        font-family:Orbitron,Inter;
+        font-size:64px;
+        line-height:0.95;
+        margin:0 0 14px;
+        letter-spacing:1px;
+        color:var(--neon);
+        text-shadow:0 8px 30px rgba(0,230,255,0.06), 0 0 22px rgba(0,230,255,0.12);
+    }
+
+    @media (max-width:980px){h1{font-size:44px;text-align:center}}
+    .sub{font-size:20px;color:var(--muted);margin-bottom:18px}
+    p.lead{color:rgba(255,255,255,0.68);line-height:1.6;margin-bottom:26px}
+
+    .btn-row {
+        display:flex;
+        gap:14px;
+        flex-wrap:wrap
+    }
+    .btn {
+        display:inline-flex;
+        align-items:center;
+        gap:10px;
+        padding:12px 18px;
+        border-radius:12px;
+        border:1px solid rgba(255,255,255,0.06);
+        cursor:pointer;
+        background:transparent;font-weight:600
+    }
+    .btn.primary {
+        background:linear-gradient(90deg, rgba(0,230,255,0.08), rgba(45,180,255,0.03));
+        border:1px solid rgba(0,230,255,0.18);
+        box-shadow:0 6px 30px rgba(0,230,255,0.04);
+        color:var(--neon)
+    }
+    .btn.ghost {
+    border:1px solid rgba(255,255,255,0.06);
+    color:var(--neon-2)
+    }
+    .btn .kbd {
+      font-weight:700;
+      font-family:monospace;
+      padding:4px 8px;
+      border-radius:7px;
+      background:rgba(255,255,255,0.02);
+    }
+
+    .hero-right {
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative
+    }
+    .robot{
+      width:100%;
+      max-width:480px;
+      border-radius:18px;
+      overflow:hidden;
+      position:relative;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+      transform-origin:center center; transition:transform .35s ease; 
+    }
+    .robot img {
+      width:100%;
+      height:auto;
+      display:block
+    }
+    .glow {
+      position:absolute;
+      pointer-events:none;
+      inset:0;
+      mix-blend-mode:screen
+    }
+
+    .chart-overlay {
+      position:absolute;
+      left:0;
+      top:0;
+      bottom:0;
+      width:100%;
+      height:100%;
+      background-image:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      opacity:.6;
+      mask-image:linear-gradient(180deg,#000,#0000);
+    }
+
+    .neon-line {
+      display:block
+    }
+    .neon-anim {
+      background:linear-gradient(90deg, rgba(0,230,255,0.2), rgba(0,200,255,0.04));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+      animation:glow 2.8s ease-in-out infinite
+    }
+    @keyframes glow {0%,100%{filter:drop-shadow(0 0 6px rgba(0,230,255,0.06))}50%{filter:drop-shadow(0 0 28px rgba(0,230,255,0.14))}}
+
+    .meta {
+      margin-top:18px;
+      color:rgba(255,255,255,0.45);
+      font-size:13px
+    }
+
+    .btn:focus {
+      outline:3px solid rgba(0,230,255,0.12);
+      outline-offset:2px
+    }
+
+    .particles {
+      position:absolute;
+      inset:0;
+      pointer-events:none
+    }
+    .p {
+      position:absolute;
+      border-radius:50%;
+      opacity:.12
+    }
+  </style>
+
+</head>
+<body>
+  <div class="wrap" role="main">
+    <section class="hero-left" aria-labelledby="title">
+      <h1 id="title"><span class="neon-line">SMART TRADE EA</span></h1>
+      <div class="sub">Smart Autopilot Trading Community</div>
+      <p class="lead">Forex & Crypto - BTCUSD</p>
+
+      <div class="btn-row" role="navigation" aria-label="Tombol aksi">
+        <button class="btn primary" id="downloadBtn" title="Download demo">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 11l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 21H3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <a href="https://my-zfx.com/reg/truely?agentnumber=Z6309821S1">Download Demo</a>
+        </button>
+
+        <a class="btn ghost" id="whBtn" href="#" title="Beli via WhatsApp">
+          Beli Sekarang (WhatsApp)
+        </a>
+      </div>
+    </section>
+
+    <aside class="hero-right" aria-hidden="false">
+      <div class="robot" id="robot">
+        <img src="robot.jpeg" alt="Hightech robot illustration" loading="lazy">
+        <div class="chart-overlay" aria-hidden="true"></div>
+        <canvas class="glow" id="glowCanvas"></canvas>
+      </div>
+      <div class="particles" aria-hidden="true" id="particles"></div>
+    </aside>
+  </div>
+
+  <script>
+    (function(){
+      const whBtn = document.getElementById('whBtn');
+      const robot = document.getElementById('robot');
+
+      const phone = '6281227122288';
+      whBtn.href = `https://wa.me/${phone}?text=${encodeURIComponent('Halo, saya tertarik membeli SMART TRADE EA. Bisa info detailnya?')}`;
+
+      document.addEventListener('mousemove', e => {
+        const rect = robot.getBoundingClientRect();
+        const cx = rect.left + rect.width/2; const cy = rect.top + rect.height/2;
+        const dx = (e.clientX - cx)/rect.width; const dy = (e.clientY - cy)/rect.height;
+        robot.style.transform = `perspective(900px) rotateY(${dx*6}deg) rotateX(${ -dy*4 }deg) translateZ(6px)`;
+      });
+
+      const particles = document.getElementById('particles');
+      for(let i=0;i<12;i++){const d=document.createElement('div');d.className='p';const s=6+Math.random()*36;d.style.width=s+'px';d.style.height=s+'px';d.style.left=(Math.random()*100)+'%';d.style.top=(Math.random()*100)+'%';d.style.background='radial-gradient(circle at 30% 30%, rgba(0,230,255,0.9), rgba(0,150,255,0.2))';d.style.opacity=(0.04+Math.random()*0.16).toString();particles.appendChild(d)}
+
+      const canvas = document.getElementById('glowCanvas');
+      function resize(){canvas.width = robot.clientWidth; canvas.height=robot.clientHeight;}
+      resize(); window.addEventListener('resize', resize);
+      const ctx = canvas.getContext('2d');
+      document.addEventListener('pointermove', e => {
+        const r = robot.getBoundingClientRect();
+        const x = e.clientX - r.left; const y = e.clientY - r.top;
+        drawGlow(x,y);
+      });
+      function drawGlow(x,y){ctx.clearRect(0,0,canvas.width,canvas.height); const g=ctx.createRadialGradient(x,y,10,x,y,Math.max(canvas.width,canvas.height)/2); g.addColorStop(0,'rgba(0,230,255,0.09)'); g.addColorStop(0.35,'rgba(0,230,255,0.03)'); g.addColorStop(1,'rgba(0,0,0,0)'); ctx.fillStyle=g; ctx.fillRect(0,0,canvas.width,canvas.height);} 
+
+      let t=0; setInterval(()=>{t+=0.012; const s = 1 + Math.sin(t)*0.035; robot.style.filter = `saturate(${1.03 + Math.sin(t)/30})`; },40);
+    })();
+  </script>
+</body>
+</html>
